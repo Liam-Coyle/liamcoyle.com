@@ -3,25 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="favicons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="favicons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="favicons/favicon-16x16.png"
-    />
-    <link rel="manifest" href="favicons/site.webmanifest" />
     <title>The Industry Expert's AI Startup Accelerator</title>
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
     <style>
       /* Core palette */
       :root {
@@ -135,12 +118,11 @@
       }
       .hero-main-content {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 2rem;
         width: 100%;
         max-width: var(--content-width);
         margin-bottom: 1.5rem;
-        text-align: left;
       }
       .hero-headshot {
         max-width: 300px;
@@ -153,22 +135,19 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
-        transform: translateY(-60px);
       }
       .hero-text-block {
-        flex-grow: 1;
+        flex: 1;
       }
       .hero-full h1 {
         font-size: 2.4rem;
         margin-bottom: 1rem;
         line-height: 1.2;
-        text-align: left;
       }
       .hero-full .sub-headline {
         font-size: 1.15rem;
         color: var(--dark-blue);
-        margin-bottom: 0;
-        text-align: left;
+        margin-bottom: 1.5rem;
       }
 
       /* CTA Button (now Submit Button) Styling */
@@ -198,41 +177,89 @@
         max-width: 500px;
       }
 
-      /* Hero Waitlist Form Specific Styling */
-      #hero-waitlist-form input[type="email"] {
-        padding: 0.8rem 1rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 1.1rem;
-        flex-grow: 1;
-        min-width: 200px;
-        line-height: 1.4; /* Match button for alignment */
+      /* ConvertKit Form Styling */
+      .formkit-form {
+        margin: 0 !important;
+        max-width: 500px !important;
       }
-      #hero-waitlist-form button {
-        margin-top: 0; /* Override default cta-button margin */
-        white-space: nowrap;
-        /* Inherits other .cta-button styles like padding, font-size, color, etc. */
+      .formkit-form .formkit-fields {
+        display: flex !important;
+        gap: 0.5rem !important;
+      }
+      .formkit-form .formkit-input {
+        padding: 0.8rem 1rem !important;
+        border: 1px solid #ccc !important;
+        border-radius: 4px !important;
+        font-size: 1.1rem !important;
+        flex: 1 !important;
+        min-width: 200px !important;
+        line-height: 1.4 !important;
+        font-family: inherit !important;
+      }
+      .formkit-form .formkit-submit {
+        background: var(--royal-blue) !important;
+        color: var(--white) !important;
+        border: 1px solid var(--royal-blue) !important;
+        border-radius: 4px !important;
+        padding: 0.8rem 1.6rem !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        cursor: pointer !important;
+        text-decoration: none !important;
+        line-height: 1.4 !important;
+        white-space: nowrap !important;
+        font-family: inherit !important;
+      }
+      .formkit-form .formkit-submit:hover {
+        background: #163165 !important;
       }
 
-      /* Final CTA Waitlist Form Specific Styling */
-      #final-cta-waitlist-form input[type="email"] {
-        padding: 0.8rem 1rem; /* Assuming same as hero for consistency */
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 1.1rem;
-        flex-grow: 1;
-        min-width: 200px;
-        line-height: 1.4; /* Match button for alignment */
-      }
-      #final-cta-waitlist-form button {
-        margin-top: 0; /* Override default cta-button margin */
-        white-space: nowrap;
-        /* Inherits other .cta-button styles */
-      }
-      /* Add centering for the final CTA form on desktop */
-      #final-cta-waitlist-form {
-        margin-left: auto;
-        margin-right: auto;
+      @media (max-width: 1199px) {
+        .hero-main-content {
+          flex-direction: column-reverse;
+          text-align: center;
+          align-items: center;
+          gap: 1.5rem;
+        }
+        .hero-headshot {
+          max-width: 250px;
+          margin: 0 auto;
+        }
+        .hero-text-block {
+          width: 100%;
+        }
+        .hero-full h1,
+        .hero-full .sub-headline {
+          text-align: center;
+        }
+
+        /* Mobile form styling - both hero and final CTA */
+        .hero-full .formkit-form,
+        .final-cta .formkit-form {
+          margin: 0 auto !important;
+          width: 100% !important;
+          padding: 0 1rem !important;
+        }
+        .hero-full .formkit-form .formkit-fields,
+        .final-cta .formkit-form .formkit-fields {
+          flex-direction: column !important;
+          width: 100% !important;
+          gap: 0.5rem !important;
+        }
+        .hero-full .formkit-form .formkit-field,
+        .final-cta .formkit-form .formkit-field {
+          width: 100% !important;
+        }
+        .hero-full .formkit-form .formkit-input,
+        .final-cta .formkit-form .formkit-input {
+          width: 100% !important;
+          max-width: none !important;
+        }
+        .hero-full .formkit-form .formkit-submit,
+        .final-cta .formkit-form .formkit-submit {
+          width: 100% !important;
+          max-width: none !important;
+        }
       }
 
       /* Content Sections */
@@ -428,13 +455,11 @@
       }
 
       .final-cta {
-        /* margin-top will be handled by main > section */
         text-align: center;
-        padding: 1.5rem 0; /* Keep existing specific padding */
+        padding: 1.5rem 0;
       }
       .final-cta h2 {
-        /* This is the H2 inside .final-cta */
-        font-size: 1.9rem; /* Match other section titles */
+        font-size: 1.9rem;
         margin-bottom: 1rem;
       }
       .final-cta p {
@@ -560,6 +585,43 @@
           align-items: flex-start; /* Align icon to the top of the text content on mobile */
         }
       }
+
+      /* Final CTA specific form styling */
+      .final-cta .formkit-form {
+        margin: 0 auto !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+      }
+      .final-cta .formkit-form .formkit-fields {
+        max-width: 500px !important;
+        width: 100% !important;
+      }
+
+      @media (max-width: 1199px) {
+        .formkit-form {
+          margin: 0 auto !important;
+          width: 100% !important;
+        }
+        .formkit-form .formkit-fields {
+          flex-direction: column !important;
+          width: 100% !important;
+        }
+        .formkit-form .formkit-field {
+          width: 100% !important;
+        }
+        .formkit-form .formkit-input {
+          width: 100% !important;
+          max-width: none !important;
+        }
+        .formkit-form .formkit-submit {
+          width: 100% !important;
+          max-width: none !important;
+        }
+        .final-cta .formkit-form {
+          padding: 0 1rem !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -585,22 +647,64 @@
                 you.</b
               >
             </p>
+            <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
             <form
-              action="YOUR_EMAIL_SERVICE_ACTION_URL_HERE"
-              method="POST"
-              class="waitlist-form"
-              id="hero-waitlist-form"
+              action="https://app.kit.com/forms/8134177/subscriptions"
+              class="seva-form formkit-form"
+              method="post"
+              data-sv-form="8134177"
+              data-uid="b3d2cf27db"
+              data-format="inline"
+              data-version="5"
+              data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":""},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":false,"url":"https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+              min-width="400 500 600 700 800"
             >
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-                aria-label="Email address for waitlist"
-              />
-              <button type="submit" class="cta-button">
-                JOIN THE WAITLIST
-              </button>
+              <div data-style="clean">
+                <ul
+                  class="formkit-alert formkit-alert-error"
+                  data-element="errors"
+                  data-group="alert"
+                ></ul>
+                <div
+                  data-element="fields"
+                  data-stacked="false"
+                  class="seva-fields formkit-fields"
+                >
+                  <div class="formkit-field">
+                    <input
+                      class="formkit-input"
+                      name="email_address"
+                      aria-label="Email Address"
+                      placeholder="Email Address"
+                      required=""
+                      type="email"
+                      style="
+                        color: rgb(0, 0, 0);
+                        border-color: rgb(227, 227, 227);
+                        border-radius: 4px;
+                        font-weight: 400;
+                      "
+                    />
+                  </div>
+                  <button
+                    data-element="submit"
+                    class="formkit-submit formkit-submit"
+                    style="
+                      color: rgb(255, 255, 255);
+                      background-color: rgb(30, 55, 153);
+                      border-radius: 4px;
+                      font-weight: 700;
+                    "
+                  >
+                    <div class="formkit-spinner">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                    <span class="">JOIN THE WAITLIST</span>
+                  </button>
+                </div>
+              </div>
             </form>
             <p
               style="
@@ -1133,20 +1237,64 @@
             so spots are extremely limited. Join the priority waitlist to be
             among the first considered when the next slot opens.
           </p>
+          <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
           <form
-            action="YOUR_EMAIL_SERVICE_ACTION_URL_HERE"
-            method="POST"
-            class="waitlist-form"
-            id="final-cta-waitlist-form"
+            action="https://app.kit.com/forms/8134177/subscriptions"
+            class="seva-form formkit-form"
+            method="post"
+            data-sv-form="8134177"
+            data-uid="b3d2cf27db"
+            data-format="inline"
+            data-version="5"
+            data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":""},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":false,"url":"https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+            min-width="400 500 600 700 800"
           >
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-              aria-label="Email address for waitlist"
-            />
-            <button type="submit" class="cta-button">JOIN THE WAITLIST</button>
+            <div data-style="clean">
+              <ul
+                class="formkit-alert formkit-alert-error"
+                data-element="errors"
+                data-group="alert"
+              ></ul>
+              <div
+                data-element="fields"
+                data-stacked="false"
+                class="seva-fields formkit-fields"
+              >
+                <div class="formkit-field">
+                  <input
+                    class="formkit-input"
+                    name="email_address"
+                    aria-label="Email Address"
+                    placeholder="Email Address"
+                    required=""
+                    type="email"
+                    style="
+                      color: rgb(0, 0, 0);
+                      border-color: rgb(227, 227, 227);
+                      border-radius: 4px;
+                      font-weight: 400;
+                    "
+                  />
+                </div>
+                <button
+                  data-element="submit"
+                  class="formkit-submit formkit-submit"
+                  style="
+                    color: rgb(255, 255, 255);
+                    background-color: rgb(30, 55, 153);
+                    border-radius: 4px;
+                    font-weight: 700;
+                  "
+                >
+                  <div class="formkit-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <span class="">JOIN THE WAITLIST</span>
+                </button>
+              </div>
+            </div>
           </form>
         </section>
       </div>
