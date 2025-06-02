@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicons/site.webmanifest" />
+    <title>Thank You! | The Industry Expert's AI Startup Accelerator</title>
+    <style>
+      /* Core palette - Copied from your landing page */
+      :root {
+        --royal-blue: #1e3799;
+        --dark-blue: #0c2461;
+        --light-blue-bg: #f4f6ff;
+        --light-grey-bg: #f9f9f9;
+        --white: #ffffff;
+        --content-width: 800px;
+        --base-padding: 2rem;
+        --text-grey: #4a5568;
+        --success-green: #15803d; /* For emphasis */
+        --cal-embed-bg: #ffffff; /* Background for the embed container */
+      }
+
+      /* Reset & base - Copied from your landing page */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%; /* This ensures body can fill viewport */
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--dark-blue);
+        background: var(--light-blue-bg); /* Applied to body */
+        overflow-x: hidden;
+      }
+      body {
+        display: flex;
+        flex-direction: column; /* This allows footer to be pushed down */
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 0 var(--base-padding);
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center all content horizontally */
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: 700;
+        color: var(--royal-blue);
+        margin: 0 0 1rem;
+        line-height: 1.3;
+      }
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.75rem;
+      }
+      h2 {
+        font-size: 1.7rem;
+        color: var(--dark-blue);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 100%;
+      }
+      p.sub-text {
+        font-size: 0.9em;
+        color: var(--text-grey);
+        margin-top: -0.5rem;
+      }
+      strong {
+        font-weight: 600;
+      }
+      .highlight-text {
+        color: var(--success-green);
+        font-weight: 700;
+      }
+      .date-lozenge {
+        background-color: #fffbeb;
+        color: #78350f;
+        padding: 0.2em 0.6em;
+        border-radius: 4px;
+        font-size: 0.9em;
+        font-weight: 600;
+        display: inline-block;
+        border: 1px solid #fde68a;
+      }
+
+      /* Thank You Page Specific Section */
+      .thank-you-section {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 1rem; /* Increased padding for better spacing */
+        background: var(--light-blue-bg);
+      }
+
+      .booking-section {
+        margin-top: 0.75rem; /* Reduced from 1.5rem */
+        max-width: 600px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .booking-section-context {
+        margin-bottom: 0.5rem; /* Reduced space before button */
+      }
+
+      .booking-button {
+        background-color: var(--royal-blue);
+        color: var(--white);
+        border: none;
+        padding: 1.2rem 2.5rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin: 0.5rem 0; /* Reduced from 0.75rem */
+        box-shadow: 0 2px 8px rgba(30, 55, 153, 0.15);
+      }
+
+      .booking-button:hover {
+        background-color: var(--dark-blue);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(30, 55, 153, 0.2);
+      }
+
+      .booking-button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(30, 55, 153, 0.15);
+      }
+
+      /* Footer - MODIFIED */
+      footer {
+        text-align: center;
+        padding: 2rem 0;
+        background-color: var(
+          --light-blue-bg
+        ); /* Make footer background blue */
+        margin-top: auto; /* Pushes footer to bottom if content is short */
+      }
+      footer p {
+        margin-bottom: 0;
+        font-size: 0.9em;
+        color: var(
+          --text-grey
+        ); /* This color should still be readable on light-blue-bg */
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+        .container {
+          padding: 0 1rem;
+        }
+        .thank-you-section {
+          padding: 2rem 1rem;
+          /* min-height: auto; */ /* Not needed with flex-grow */
+        }
+      }
+    </style>
+    <!-- Cal.com initialization script -->
+    <script type="text/javascript">
+      (function (C, A, L) {
+        let p = function (a, ar) {
+          a.q.push(ar);
+        };
+        let d = C.document;
+        C.Cal =
+          C.Cal ||
+          function () {
+            let cal = C.Cal;
+            let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () {
+                p(api, arguments);
+              };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["initNamespace", namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+
+      Cal("init", "accelerator-quick-chat", { origin: "https://cal.com" });
+      Cal.ns["accelerator-quick-chat"]("ui", {
+        theme: "light",
+        hideEventTypeDetails: false,
+        layout: "column_view",
+      });
+    </script>
+  </head>
+  <body>
+    <section class="thank-you-section">
+      <div class="container">
+        <h1>Thank You for Joining the Waitlist!</h1>
+
+        <p style="margin-top: 1.5rem">
+          We've received your application, and your spot on the waitlist is
+          confirmed. The next one-on-one accelerator slot is scheduled to open
+          in <strong class="date-lozenge">July 2025</strong>
+        </p>
+        <p>
+          You'll also receive an email confirmation shortly with these details.
+        </p>
+
+        <h2>Want to meet sooner?</h2>
+        <p class="booking-section-context">
+          If you have immediate questions about the accelerator, want to briefly
+          discuss your AI startup idea, or simply explore if this is the right
+          fit for you down the line, I'd be happy to connect.
+        </p>
+
+        <div class="booking-section">
+          <button
+            class="booking-button"
+            data-cal-link="liamcoyle/accelerator-quick-chat"
+            data-cal-namespace="accelerator-quick-chat"
+            data-cal-config='{"layout":"column_view","theme":"light"}'
+          >
+            Schedule a Quick Chat
+          </button>
+
+          <p style="font-size: 0.9em; color: var(--text-grey)">
+            There's absolutely no pressure to book a call – this is completely
+            optional. Your place on the waitlist is secure regardless!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>© 2025 BRANDCANVAS LTD. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
