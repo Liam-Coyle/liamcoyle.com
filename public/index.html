@@ -104,7 +104,10 @@
       }
       /* h3 in .content-section is styled separately */
       .content-section
-        > h3:not(.no-brainer-section h3):not(.guarantee-section h3) {
+        > h3:not(.no-brainer-section h3):not(.guarantee-section h3):not(
+          .testimonials-section h3
+        ) {
+        /* Added :not(.testimonials-section h3) for future if needed */
         /* Exclude specific h3s */
         font-size: 1.4rem;
         color: var(--dark-blue);
@@ -426,6 +429,129 @@
         color: #15803d; /* Strong Green for FREE */
       }
 
+      /* TESTIMONIALS SECTION STYLING - NEW */
+      .testimonials-section {
+        text-align: center;
+      }
+      .testimonials-section h2 {
+        margin-bottom: 2rem;
+      }
+      .testimonial-carousel {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .testimonial-container {
+        position: relative;
+        margin-bottom: 4rem; /* Consistent space for arrows across all screen sizes */
+      }
+      .testimonial-card {
+        background-color: var(--light-blue-bg);
+        padding: 1.5rem 1.5rem 2rem 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #dde1f0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        display: none; /* Hide by default */
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      .testimonial-card.active {
+        display: block; /* Show when active */
+        opacity: 1;
+      }
+      .testimonial-quote {
+        font-style: italic;
+        color: var(--dark-blue);
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+      .testimonial-quote strong {
+        font-weight: 600;
+      }
+      .testimonial-author {
+        font-weight: 600;
+        color: var(--royal-blue);
+        font-size: 0.95em;
+        margin-bottom: 0;
+      }
+
+      /* Progress bar styling */
+      .testimonial-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: #dde1f0;
+        border-radius: 0 0 8px 8px;
+        overflow: hidden;
+      }
+      .testimonial-progress-bar {
+        width: 0%;
+        height: 100%;
+        background-color: var(--royal-blue);
+        transition: width 0.1s linear;
+      }
+
+      /* Navigation arrows */
+      .testimonial-nav {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        z-index: 2;
+      }
+      .testimonial-arrow {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--white);
+        border: 1px solid #dde1f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        pointer-events: auto;
+        color: var(--royal-blue);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .testimonial-arrow:hover {
+        background-color: var(--royal-blue);
+        color: var(--white);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+      .testimonial-arrow svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .testimonial-nav {
+          /* Remove top/bottom/transform overrides since we're using the same positioning */
+        }
+        .testimonial-container {
+          /* Remove margin-bottom override since we're using the same spacing */
+        }
+        .testimonial-card {
+          padding: 1.25rem 1.25rem 1.75rem 1.25rem; /* Keep the mobile padding adjustment */
+        }
+        .testimonial-arrow {
+          width: 36px; /* Keep the mobile size adjustment */
+          height: 36px;
+        }
+        .testimonial-arrow svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+      /* END TESTIMONIALS SECTION STYLING - NEW */
+
       #bonuses.content-section {
         /* margin-top will be handled by main > section */
         padding-top: 1rem; /* Keep existing specific padding */
@@ -616,7 +742,18 @@
         width: 100% !important;
       }
 
+      @media (min-width: 768px) {
+        /* Apply grid for tablet and larger - NEW for testimonials */
+        .testimonial-grid {
+          grid-template-columns: repeat(
+            2,
+            1fr
+          ); /* 2 columns for 4 testimonials */
+        }
+      }
+
       @media (max-width: 1199px) {
+        /* This media query already exists, ensure formkit styles are not duplicated or conflicting */
         .formkit-form {
           margin: 0 auto !important;
           width: 100% !important;
@@ -1097,6 +1234,111 @@
           </div>
         </section>
 
+        <!-- TESTIMONIALS SECTION - NEW -->
+        <section class="content-section testimonials-section" id="testimonials">
+          <h2>What My Clients & Colleagues Say</h2>
+          <div class="testimonial-carousel">
+            <div class="testimonial-container">
+              <div class="testimonial-card active">
+                <p class="testimonial-quote">
+                  "Liam was engaged to carry out a feasibility assessment, proof
+                  of concept, deployment, and operational maintenance of an AI
+                  project. In my view Liam's approach was
+                  <strong>highly professional</strong>. He demonstrated
+                  <strong
+                    >in-depth technical knowledge, rapid development
+                    capabilities, excellent engagement with staff,
+                    adaptability</strong
+                  >
+                  and provided valuable advice on data security. The innovative
+                  internal chatbot we required was
+                  <strong>successfully delivered in a limited time-frame</strong
+                  >."
+                </p>
+                <p class="testimonial-author">
+                  Margaret Quinn (Programme Manager @ ERNACT)
+                </p>
+              </div>
+              <div class="testimonial-card">
+                <p class="testimonial-quote">
+                  "We are more than happy to recommend Liam - he was
+                  <strong
+                    >very honest and forthcoming, took the time to speak with us
+                    all individually</strong
+                  >, answered all the questions we had,
+                  <strong>explained everything completely</strong>, and
+                  maintained a very nice manner throughout."
+                </p>
+                <p class="testimonial-author">
+                  Mary Leahy Sweeney (Manager @ Gteic Carraig Airt)
+                </p>
+              </div>
+              <div class="testimonial-card">
+                <p class="testimonial-quote">
+                  "I had the pleasure of working with Liam on an MLOps
+                  project... Liam was
+                  <strong>very driven and produced great results</strong> on
+                  <i>every</i> project he was involved in. Liam's attitude was
+                  great;
+                  <strong
+                    >hardworking, curious, self-motivated and proactive</strong
+                  >... I was impressed with Liam's ability to pick up unfamiliar
+                  subjects and <strong>teach himself rapidly</strong>... I also
+                  observed Liam presenting work to non-technical people and he
+                  <strong
+                    >communicated complex subjects in a simple and
+                    straightforward manner</strong
+                  >. I highly recommend Liam."
+                </p>
+                <p class="testimonial-author">
+                  Jay Mistry (AI/Data Science Practitioner @ Kainos)
+                </p>
+              </div>
+              <div class="testimonial-card">
+                <p class="testimonial-quote">
+                  "I was always impressed with the
+                  <strong>quality of his work</strong>, his great capacity to
+                  <strong>think out of the box</strong> and his ability to
+                  <strong>quickly grasp complex concepts</strong>. He is a
+                  pragmatic, very proactive, knowledgeable and reliable
+                  professional... He was able to carry out the job over his role
+                  level in an <strong>outstanding manner</strong>. On top of
+                  this, his
+                  <strong
+                    >people skills and character are to be highlighted</strong
+                  >. I would recommend Liam to any person or team with no
+                  doubts."
+                </p>
+                <p class="testimonial-author">
+                  Daniel Garcia (Data Scientist @ Kainos/Accenture)
+                </p>
+              </div>
+              <div class="testimonial-progress">
+                <div class="testimonial-progress-bar"></div>
+              </div>
+            </div>
+            <div class="testimonial-nav">
+              <button
+                class="testimonial-arrow prev"
+                aria-label="Previous testimonial"
+              >
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
+              </button>
+              <button
+                class="testimonial-arrow next"
+                aria-label="Next testimonial"
+              >
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- END OF TESTIMONIALS SECTION - NEW -->
+
         <section class="content-section" id="bonuses">
           <h2>To Further Support Your Journey: Essential Founder Resources</h2>
           <p>
@@ -1268,7 +1510,7 @@
             data-uid="b3d2cf27db"
             data-format="inline"
             data-version="5"
-            data-options='{"settings":{"after_subscribe":{"action":"redirect","success_message":"","redirect_url":"https://liamcoyle.com/thanks"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":false,"url":"https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+            data-options='{"settings":{"after_subscribe":{"action":"redirect","success_message":"","redirect_url":"https://liamcoyle.com/thanks"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":false,"url":"https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
             min-width="400 500 600 700 800"
           >
             <div data-style="clean">
@@ -1333,5 +1575,99 @@
       async
       src="https://scripts.simpleanalyticscdn.com/latest.js"
     ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".testimonial-card");
+        const prevButton = document.querySelector(".testimonial-arrow.prev");
+        const nextButton = document.querySelector(".testimonial-arrow.next");
+        const progressBar = document.querySelector(".testimonial-progress-bar");
+        let currentIndex = 0;
+        const interval = 8000; // 8 seconds between transitions
+        let startTime;
+        let pausedTime = 0;
+        let isPaused = false;
+        let progressInterval;
+        let autoRotate;
+
+        function showTestimonial(index, resetProgress = true) {
+          cards.forEach((card) => {
+            card.classList.remove("active");
+          });
+          cards[index].classList.add("active");
+
+          if (resetProgress) {
+            startNewProgress();
+          }
+        }
+
+        function startNewProgress() {
+          clearInterval(progressInterval);
+          startTime = Date.now();
+          pausedTime = 0;
+          isPaused = false;
+          updateProgress();
+        }
+
+        function updateProgress() {
+          progressInterval = setInterval(() => {
+            if (!isPaused) {
+              const elapsedTime = Date.now() - startTime - pausedTime;
+              const progress = Math.min((elapsedTime / interval) * 100, 100);
+              progressBar.style.width = `${progress}%`;
+
+              if (progress >= 100) {
+                nextTestimonial();
+              }
+            }
+          }, 16); // 60fps update
+        }
+
+        function pauseProgress() {
+          if (!isPaused) {
+            isPaused = true;
+            pausedTime = Date.now() - startTime;
+          }
+        }
+
+        function resumeProgress() {
+          if (isPaused) {
+            isPaused = false;
+            startTime = Date.now() - pausedTime;
+          }
+        }
+
+        function nextTestimonial() {
+          currentIndex = (currentIndex + 1) % cards.length;
+          showTestimonial(currentIndex);
+        }
+
+        function prevTestimonial() {
+          currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+          showTestimonial(currentIndex);
+        }
+
+        // Add click handlers to arrows
+        nextButton.addEventListener("click", () => {
+          nextTestimonial();
+        });
+
+        prevButton.addEventListener("click", () => {
+          prevTestimonial();
+        });
+
+        // Initialize first testimonial and progress
+        showTestimonial(0);
+
+        // Pause/Resume on hover
+        const carousel = document.querySelector(".testimonial-carousel");
+        carousel.addEventListener("mouseenter", () => {
+          pauseProgress();
+        });
+
+        carousel.addEventListener("mouseleave", () => {
+          resumeProgress();
+        });
+      });
+    </script>
   </body>
 </html>
