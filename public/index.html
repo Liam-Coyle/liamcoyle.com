@@ -1,12 +1,1145 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hello, World!</title>
-	</head>
-	<body>
-		<h1 id="heading">Hello, World!</h1>
-		<p>This page comes from a static asset stored at `public/index.html` as configured in `wrangler.jsonc`.</p>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Industry Expert's AI Startup Accelerator</title>
+    <style>
+      /* Core palette */
+      :root {
+        --royal-blue: #1e3799;
+        --dark-blue: #0c2461;
+        --light-blue-bg: #f4f6ff;
+        --light-grey-bg: #f9f9f9; /* Used for highlight section */
+        --white: #ffffff;
+        --content-width: 800px;
+        --base-padding: 2rem;
+        --text-grey: #4a5568;
+      }
+
+      /* Reset & base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--dark-blue);
+        background: var(--white);
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Top Navbar Styling - REMOVING */
+      /*
+      .top-navbar {
+        background-color: var(--white);
+        padding: 0.8rem var(--base-padding); 
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+        position: relative; 
+        z-index: 1000;
+      }
+      .navbar-logo {
+        display: block;
+        max-width: 240px; 
+        height: auto;
+      }
+      */
+
+      .container {
+        width: 100%;
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 0 var(--base-padding);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+        color: var(--royal-blue);
+        margin: 0 0 1rem;
+      }
+      h1 {
+        font-size: 2.4rem;
+        line-height: 1.2;
+      }
+      /* h2 in .content-section is styled separately */
+      .content-section > h2 {
+        /* More specific selector for general h2 in content */
+        font-size: 1.9rem;
+        margin-top: 2.2rem;
+      }
+      /* h3 in .content-section is styled separately */
+      .content-section
+        > h3:not(.no-brainer-section h3):not(.guarantee-section h3) {
+        /* Exclude specific h3s */
+        font-size: 1.4rem;
+        color: var(--dark-blue);
+        margin-top: 1.5rem;
+      }
+      h4 {
+        font-size: 1.2rem;
+        color: var(--royal-blue);
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+      strong {
+        font-weight: 600;
+      }
+
+      /* Hero */
+      .hero-full {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem 1rem;
+        background: var(--light-blue-bg);
+      }
+      .hero-main-content {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        max-width: var(--content-width);
+        margin-bottom: 1.5rem;
+        text-align: left;
+      }
+      .hero-headshot {
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--white);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        transform: translateY(-60px);
+      }
+      .hero-text-block {
+        flex-grow: 1;
+      }
+      .hero-full h1 {
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        text-align: left;
+      }
+      .hero-full .sub-headline {
+        font-size: 1.15rem;
+        color: var(--dark-blue);
+        margin-bottom: 0;
+        text-align: left;
+      }
+
+      /* CTA Button (now Submit Button) Styling */
+      .cta-button {
+        background: var(--royal-blue);
+        color: var(--white);
+        border: 1px solid var(--royal-blue);
+        border-radius: 4px;
+        padding: 0.8rem 1.6rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        line-height: 1.4;
+        margin-top: 0.5rem; /* Default for standalone buttons */
+      }
+      .cta-button:hover {
+        background: #163165;
+      }
+
+      /* Waitlist Form General Layout */
+      .waitlist-form {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        margin-top: 1.5rem;
+        max-width: 500px;
+      }
+
+      /* Hero Waitlist Form Specific Styling */
+      #hero-waitlist-form input[type="email"] {
+        padding: 0.8rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1.1rem;
+        flex-grow: 1;
+        min-width: 200px;
+        line-height: 1.4; /* Match button for alignment */
+      }
+      #hero-waitlist-form button {
+        margin-top: 0; /* Override default cta-button margin */
+        white-space: nowrap;
+        /* Inherits other .cta-button styles like padding, font-size, color, etc. */
+      }
+
+      /* Final CTA Waitlist Form Specific Styling */
+      #final-cta-waitlist-form input[type="email"] {
+        padding: 0.8rem 1rem; /* Assuming same as hero for consistency */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1.1rem;
+        flex-grow: 1;
+        min-width: 200px;
+        line-height: 1.4; /* Match button for alignment */
+      }
+      #final-cta-waitlist-form button {
+        margin-top: 0; /* Override default cta-button margin */
+        white-space: nowrap;
+        /* Inherits other .cta-button styles */
+      }
+      /* Add centering for the final CTA form on desktop */
+      #final-cta-waitlist-form {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Content Sections */
+      .content-section {
+        padding: 1.8rem 0; /* Default padding for content sections */
+      }
+      .content-section.highlight {
+        background-color: var(--light-grey-bg);
+      }
+      .content-section ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 1.5rem;
+      }
+      .content-section ul li {
+        margin-bottom: 1rem;
+        padding-left: 1.8rem;
+        position: relative;
+      }
+      .content-section ul li::before {
+        content: "✓";
+        color: var(--royal-blue);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 1px;
+      }
+      .content-section .value-note {
+        display: block;
+        font-size: 0.95em; /* slightly smaller for item values */
+        color: #15803d; /* Changed from var(--royal-blue) to dark green */
+        font-weight: 600;
+        font-style: normal;
+        margin-top: 0.35rem; /* More space for the value note */
+      }
+      .module-item p + .value-note {
+        /* if p is followed by value-note directly in module-item */
+        margin-top: 0.5rem;
+      }
+      .bonuses-section li p + .value-note {
+        /* if p is followed by value-note directly in bonus li */
+        margin-top: 0.5rem;
+      }
+
+      .module-item {
+        display: flex; /* Enable flexbox layout */
+        align-items: center; /* Align items vertically */
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        background-color: #fdfdfd;
+      }
+      .module-item strong {
+        display: block;
+        margin-bottom: 0.3rem;
+        color: var(--dark-blue);
+        font-size: 1.05em;
+      }
+      .module-item p {
+        margin-bottom: 0.25rem;
+      }
+
+      .module-item-icon {
+        max-width: 100px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        margin-right: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      /* Specific adjustment for the #value section's top padding */
+      #value.content-section {
+        padding-top: 0.5rem; /* Reduce top padding significantly from 1.8rem */
+      }
+
+      .value-summary {
+        text-align: center;
+        padding: 2.5rem 1rem;
+        background-color: var(--dark-blue);
+        color: var(--white);
+        border-radius: 8px;
+        margin: 0.5rem 0 2rem 0;
+      }
+      .value-summary h2, /* "Total Value" label */
+      .value-summary h3  /* "Your Accelerator Investment" label */ {
+        color: var(--white);
+        margin-bottom: 0.5rem;
+        font-size: 1.8rem;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+      .value-summary .total-value {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #2ecc71; /* Emerald Green */
+        display: block;
+        margin-bottom: 2rem;
+      }
+      .value-summary .actual-investment {
+        font-size: 2.8rem; /* Increased for more emphasis */
+        font-weight: 700;
+        color: #2ecc71; /* Emerald Green */
+        display: block;
+        line-height: 1.2;
+      }
+
+      .no-brainer-section {
+        background-color: #fffbeb; /* Light Creamy Gold / Pale Yellow background */
+        border: 2px solid #facc15; /* Stronger Gold border */
+        padding: 1.5rem 2rem; /* Slightly more horizontal padding */
+        border-radius: 8px; /* Slightly larger radius */
+        margin: 2.5rem 0 1.5rem 0; /* Keep specific vertical margins for this distinct block */
+        text-align: center; /* Center align text for impact */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+      }
+      .no-brainer-section h3 {
+        color: #78350f; /* Rich Brown/Dark Gold for heading */
+        font-size: 1.6rem; /* Larger heading */
+        font-weight: 700; /* Bolder */
+        margin-bottom: 1rem; /* More space after heading */
+        margin-top: 0; /* Reset top margin for h3 inside this */
+      }
+      .no-brainer-section p {
+        font-size: 1.05em; /* Slightly larger paragraph text */
+        color: #57534e; /* Darker grey for readability */
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+      }
+      .no-brainer-section p:last-child {
+        margin-bottom: 0;
+      }
+      .no-brainer-section strong.highlight-price {
+        color: #15803d; /* Strong Green for FREE */
+        font-weight: 800; /* Even bolder */
+      }
+      .no-brainer-section strong.highlight-free {
+        color: #15803d; /* Strong Green for FREE */
+        font-weight: 800; /* Even bolder */
+        text-transform: uppercase; /* Make FREE uppercase */
+      }
+
+      .no-brainer-section strong.highlight-accelerator-price,
+      .no-brainer-section strong.highlight-credit {
+        color: #15803d; /* Strong Green for FREE */
+      }
+
+      #bonuses.content-section {
+        /* margin-top will be handled by main > section */
+        padding-top: 1rem; /* Keep existing specific padding */
+      }
+      #bonuses > h2 {
+        /* This is the h2 directly under #bonuses */
+        margin-top: 1rem; /* Keep existing specific h2 margin */
+      }
+
+      .bonuses-section ul {
+        margin-top: 1rem;
+      }
+      .bonuses-section ul li::before {
+        content: "⭐";
+      }
+      .bonuses-section li strong {
+        display: block;
+        margin-bottom: 0.2rem;
+        color: var(--dark-blue);
+        font-size: 1.05em;
+      }
+      .bonuses-section li p {
+        margin-bottom: 0.25rem;
+      }
+
+      .guarantee-section-wrapper {
+        /* margin-top will be handled by main > section */
+        padding-top: 1rem; /* Keep existing specific padding */
+        padding-bottom: 1rem; /* Keep existing specific padding */
+      }
+      .guarantee-section {
+        border: 2px dashed var(--royal-blue);
+        padding: 1.5rem;
+        text-align: center;
+        border-radius: 6px;
+      }
+      .guarantee-section h3 {
+        /* This is the H3 inside .guarantee-section */
+        color: var(--royal-blue); /* Ensure H3 in guarantee is royal blue */
+        font-size: 1.9rem; /* Make it prominent like other section titles */
+        font-weight: 700; /* Ensure it's bold */
+        margin-bottom: 1rem; /* Increase bottom margin for better spacing */
+        margin-top: 0; /* Reset top margin for h3 inside this */
+        line-height: 1.3; /* Consistent line-height */
+      }
+
+      .final-cta {
+        /* margin-top will be handled by main > section */
+        text-align: center;
+        padding: 1.5rem 0; /* Keep existing specific padding */
+      }
+      .final-cta h2 {
+        /* This is the H2 inside .final-cta */
+        font-size: 1.9rem; /* Match other section titles */
+        margin-bottom: 1rem;
+      }
+      .final-cta p {
+        margin-bottom: 1.2rem;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem 0;
+        border-top: 1px solid #eee;
+        margin-top: 2.5rem; /* Standardized top margin */
+      }
+      footer p {
+        margin-bottom: 0;
+        font-size: 0.9em;
+        color: var(--text-grey);
+      }
+
+      /* LIMITED ACCESS / SCARCITY Section - Enhanced Consistency */
+      #limited-access.content-section {
+        padding: 1.8rem 0; /* Standard vertical padding */
+        /* margin-top will be handled by main > section rule */
+        /* margin-bottom will be handled by the next section's margin-top or main > section rule */
+      }
+      #limited-access h2 {
+        font-size: 1.9rem; /* Consistent with .content-section > h2 */
+        color: var(--royal-blue); /* Consistent color */
+        margin-top: 2.2rem; /* Consistent with .content-section > h2 */
+        margin-bottom: 1rem; /* Standard h2 bottom margin */
+      }
+      #limited-access p {
+        /* Fully inherit default paragraph styles */
+        margin-bottom: 1rem; /* Standard paragraph bottom margin */
+      }
+      #limited-access p strong {
+        color: var(--royal-blue); /* Keep strong text highlighted */
+      }
+
+      /* General Section Spacing in Main */
+      main > section {
+        margin-top: 2.5rem;
+      }
+      main > section:first-child {
+        margin-top: 0;
+      }
+
+      @media (max-width: 1199px) {
+        .hero-main-content {
+          flex-direction: column-reverse; /* Stack image above text on mobile */
+          text-align: center; /* Center text content on mobile when stacked */
+          gap: 1.5rem; /* Adjust gap for stacked layout */
+        }
+        .hero-headshot {
+          max-width: 250px; /* Changed from 180px */
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1 / 1;
+          margin-bottom: 1rem;
+          transform: none;
+        }
+        .hero-full h1,
+        .hero-full .sub-headline {
+          text-align: center; /* Center text content on mobile when stacked */
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        .content-section > h2 {
+          font-size: 1.7rem;
+        }
+        .final-cta h2 {
+          font-size: 1.7rem;
+        }
+        #value.content-section {
+          padding-top: 0.5rem;
+        }
+        .value-summary h2,
+        .value-summary h3 {
+          font-size: 1.6rem;
+        }
+        .value-summary .total-value {
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+        }
+        .content-section
+          > h3:not(.no-brainer-section h3):not(.guarantee-section h3) {
+          font-size: 1.25rem;
+        }
+        .no-brainer-section h3 {
+          font-size: 1.4rem;
+        }
+        .value-summary .actual-investment {
+          font-size: 2.6rem;
+        }
+        .container {
+          padding: 0 1rem;
+        }
+        .waitlist-form {
+          flex-direction: column; /* Stack input and button on small screens */
+          align-items: stretch; /* Make them full width of their container */
+          margin-left: auto; /* Center the form block itself on mobile */
+          margin-right: auto; /* Center the form block itself on mobile */
+        }
+        .waitlist-form input[type="email"],
+        .waitlist-form button {
+          width: 100%;
+        }
+        .waitlist-form button {
+          margin-top: 0.5rem;
+        }
+        .module-item-icon {
+          max-width: 44px;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1 / 1;
+          margin-right: 1rem;
+        }
+        .module-item {
+          align-items: flex-start; /* Align icon to the top of the text content on mobile */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar Removed -->
+
+    <!-- HERO -->
+    <section class="hero-full">
+      <div class="container">
+        <div class="hero-main-content">
+          <div class="hero-text-block">
+            <h1>The Industry Expert's<br />AI Startup Accelerator</h1>
+            <p class="sub-headline">
+              You're an expert in your industry.<br /><br />You've identified
+              <b>that massive problem</b> - the one where you know whoever
+              cracks it will have a
+              <strong>hugely successful company</strong>.<br /><br />
+              You think
+              <strong>AI might finally be the answer</strong>. <br /><br />
+              This is a <strong>major opportunity</strong>, but you're not a
+              coder and new to building a tech company. <br /><br />
+              <b
+                >Sound like your situation? I made this accelerator just for
+                you.</b
+              >
+            </p>
+            <form
+              action="YOUR_EMAIL_SERVICE_ACTION_URL_HERE"
+              method="POST"
+              class="waitlist-form"
+              id="hero-waitlist-form"
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                aria-label="Email address for waitlist"
+              />
+              <button type="submit" class="cta-button">
+                JOIN THE WAITLIST
+              </button>
+            </form>
+            <p
+              style="
+                font-size: 0.85em;
+                margin-top: 0.75rem;
+                color: var(--text-grey);
+                text-align: center;
+              "
+            >
+              <span
+                style="
+                  background-color: #fffbeb;
+                  color: #78350f;
+                  padding: 0.2em 0.6em;
+                  border-radius: 4px;
+                  font-size: 1.4em;
+                  font-weight: 600;
+                  display: inline-block;
+                "
+              >
+                (Next slot opens July 2025)
+              </span>
+            </p>
+          </div>
+          <img
+            src="images/LiamCoyleHeadshot Cropped.jpg"
+            alt="Liam Coyle"
+            class="hero-headshot"
+          />
+        </div>
+        <!-- The form and p tag are now moved into hero-text-block above -->
+      </div>
+    </section>
+
+    <main>
+      <div class="container">
+        <!-- PHASES (MODULES) -->
+        <section class="content-section" id="phases">
+          <h2>What You Get in the Accelerator</h2>
+          <p>
+            A comprehensive, step-by-step program designed to turn your industry
+            knowledge into a tangible, market-ready AI startup vision.
+          </p>
+
+          <h3>Phase 1: The Clarity & Concept Blueprint</h3>
+          <div class="module-item">
+            <img
+              src="images/lightbulb-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong
+                >Idea Crystallisation & Problem-Solution Clarification
+                Document</strong
+              >
+              <p>
+                I'll personally meet with you online, for as many sessions as it
+                takes, until we've completely clarified your idea, the exact
+                problem it solves, and how your solution works, all summarised
+                clearly on paper for you.
+              </p>
+              <span class="value-note">(Value: £1,200)</span>
+            </div>
+          </div>
+          <div class="module-item">
+            <img
+              src="images/money-bag-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong>Viable Monetisation Strategy Report</strong>
+              <p>
+                I'll work with you to figure out the best way your idea can
+                actually make money - be it one-off payments, subscriptions, or
+                something else.
+              </p>
+              <span class="value-note">(Value: £1,000)</span>
+            </div>
+          </div>
+          <div class="module-item">
+            <img
+              src="images/checklist-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong
+                >Minimum Viable Product (MVP) Scope & Feature
+                Prioritisation</strong
+              >
+              <p>
+                I'll guide you to pinpoint the absolute essential features for
+                your very first product version, so you can launch something
+                impactful without unnecessary complexity.
+              </p>
+              <span class="value-note">(Value: £2,500)</span>
+            </div>
+          </div>
+          <div class="module-item">
+            <img
+              src="images/drawing-tablet-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong>Visual Concept & High-Fidelity Prototype Suite</strong>
+              <p>
+                I'll help you visualise how your product would actually work,
+                starting with simple sketches and moving to realistic, clickable
+                designs, so you can actually see, feel, and share what your
+                product will look like.
+              </p>
+              <span class="value-note">(Value: £4,000)</span>
+            </div>
+          </div>
+
+          <h3>Phase 2: The Business Foundation & Brand Launchpad</h3>
+          <div class="module-item">
+            <img
+              src="images/building-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong>Business Registration & Admin Fast-Track Service</strong>
+              <p>
+                I'll work with our partner accountancy firm to handle getting
+                your business officially registered, get your business bank
+                account set up, and all of the other initial admin tasks
+                involved with setting up your business, so you don't to worry
+                about it.
+              </p>
+              <span class="value-note">(Value: £500)</span>
+            </div>
+          </div>
+          <div class="module-item">
+            <img
+              src="images/palette-8-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong>Comprehensive Brand Identity Toolkit</strong>
+              <p>
+                I'll connect you with our trusted design partner to craft a
+                powerful brand for you - defining your core message and
+                designing your logo, colours, and overall style, all packaged in
+                a brand guide so you look instantly credible and unique.
+              </p>
+              <span class="value-note">(Value: £5,000)</span>
+            </div>
+          </div>
+          <div class="module-item">
+            <img
+              src="images/presentation-chart-line-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong>Clear & Compelling Pitch Deck Creation</strong>
+              <p>
+                I'll create a clear and compelling pitch deck that effectively
+                communicates your business idea, what makes it special, and your
+                plans for making it a success, so you can confidently share your
+                vision.
+              </p>
+              <span class="value-note">(Value: £2,500)</span>
+            </div>
+          </div>
+          <div class="module-item">
+            <img
+              src="images/globe-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong
+                >Pre-Launch Digital Presence: Landing Page, Domain & Email
+                Capture System</strong
+              >
+              <p>
+                I'll search for & secure your chosen website address ("domain")
+                and build a simple, effective landing page with an email sign-up
+                form so you can start gathering interest right away.
+              </p>
+              <span class="value-note">(Value: £1,500)</span>
+            </div>
+          </div>
+
+          <h3>Phase 3: Funding & Growth Acceleration</h3>
+          <div class="module-item">
+            <img
+              src="images/map-location-pin-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong>Curated Funding & Support Opportunities Roadmap</strong>
+              <p>
+                I'll research and hand-pick a list of the most relevant funding
+                opportunities, grants, and support programs that are a perfect
+                match for your new business.
+              </p>
+              <span class="value-note">(Value: £2,000)</span>
+            </div>
+          </div>
+          <div class="module-item">
+            <img
+              src="images/writing-notepad-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong>Done-For-You Grant & Support Application Service</strong>
+              <p>
+                I'll personally write and prepare your applications for the
+                grants and support programs we've identified, managing the
+                entire application process for you.
+              </p>
+              <span class="value-note">(Value: £5,000)</span>
+            </div>
+          </div>
+
+          <h3>Phase 4: Continuous Expert Guidance & Support</h3>
+          <div class="module-item">
+            <img
+              src="images/headset-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong
+                >Priority Access Support Channel (Email & WhatsApp)</strong
+              >
+              <p>
+                You'll have a direct line to me via email and WhatsApp for any
+                questions, quick advice, or support you need for the duration of
+                the accelerator - you won't be on your own.
+              </p>
+              <span class="value-note">(Value: £1,500)</span>
+            </div>
+          </div>
+          <div class="module-item">
+            <img
+              src="images/video-call-webcam-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong>On-Demand Expert for Your Important Calls</strong>
+              <p>
+                For any important business call where you feel my expert input
+                or presence would be valuable, I'll join (if our schedules match
+                up) and actively support you in whatever way you need during
+                that meeting.
+              </p>
+              <span class="value-note">(Value: £3,000)</span>
+            </div>
+          </div>
+
+          <h3>Phase 5: The Clear Path Forward</h3>
+          <div class="module-item">
+            <img
+              src="images/plan-idea-svgrepo-com.svg"
+              alt="Icon"
+              class="module-item-icon"
+            />
+            <div class="module-item-content">
+              <strong
+                >Transparent Fixed-Price Project Proposal & Timeline</strong
+              >
+              <p>
+                I'll provide you with a clear, fixed-price proposal to build
+                your actual MVP software - a working product that allows users
+                to sign up, pay, and use your solution, so you can start
+                collecting payments and making real money.
+              </p>
+              <span class="value-note">(Value: £2,000)</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- PAIN POINTS / CONTRAST -->
+        <section class="content-section" id="pain-points">
+          <h2>Imagine trying to do all this yourself...</h2>
+          <p>It often involves:</p>
+          <ul>
+            <li>
+              The time-consuming search for trustworthy technical consultants
+              just to explore feasibility...
+              <span class="value-note"
+                >(Countless Hours & Significant Budget)</span
+              >
+            </li>
+            <li>
+              The pressure of defining an MVP scope, often leading to
+              uncertainty and risking costly overspends...
+              <span class="value-note"
+                >(Weeks of Delays & Potential £10,000s Misdirected)</span
+              >
+            </li>
+            <li>
+              Juggling separate designers for branding, then another for
+              prototyping, a web developer, a pitch deck specialist...
+              <span class="value-note"
+                >(£8,000 - £15,000+ & The Headache of Managing Multiple
+                Vendors)</span
+              >
+            </li>
+            <li>
+              And navigating the complex grant landscape alone, which can mean
+              dozens of hours for a low chance of success...
+              <span class="value-note"
+                >(Dozens of Hours & Often Disappointment)</span
+              >
+            </li>
+          </ul>
+          <p>
+            <strong
+              >Instead, I'll work with you one-on-one, step-by-step, to get all
+              of this done right, together.</strong
+            >
+          </p>
+        </section>
+
+        <!-- VALUE PROPOSITION -->
+        <section class="content-section" id="value">
+          <div class="value-summary">
+            <h2>
+              Total Value You Receive:
+              <span class="total-value">Over £31,700+</span>
+            </h2>
+            <h3>
+              Your Accelerator Investment:
+              <span class="actual-investment">£9,999</span>
+            </h3>
+          </div>
+
+          <div class="no-brainer-section">
+            <h3>
+              Here's Why This is a True <br />
+              "No-Brainer" Investment
+            </h3>
+            <p>
+              Building a custom AI MVP is a significant step, typically
+              costing<br />
+              <strong class="highlight-price-anchor">£20,000 to £30,000+</strong
+              >.
+            </p>
+            <p>
+              When you join this Accelerator for
+              <strong class="highlight-accelerator-price">£9,999</strong>, and
+              then choose me to build your MVP,
+              <strong class="highlight-credit">
+                that <i>entire</i> £9,999 is applied as a full credit towards
+                your MVP development cost.
+              </strong>
+            </p>
+            <p>
+              All the essential groundwork we do - the strategic clarity,
+              branding, clickable prototype, business setup, funding prep -
+              <strong class="highlight-free">becomes effectively FREE</strong>
+              as your Accelerator investment directly reduces what you'll pay
+              for the actual software build.
+            </p>
+          </div>
+        </section>
+
+        <section class="content-section" id="bonuses">
+          <h2>To Further Support Your Journey: Essential Founder Resources</h2>
+          <p>
+            Beyond the core accelerator program, I also want to equip you with
+            these practical resources to help you navigate common early-stage
+            challenges:
+          </p>
+          <ul class="bonuses-section">
+            <li>
+              <strong>BONUS 1: The "Founder's Control Panel" Access</strong>
+              <p>
+                I'll give you access to our project management space, your
+                'Founder's Control Panel,' so you can easily see all progress,
+                key dates, files, and communications in one organised place.
+              </p>
+              <span class="value-note">(Value: £150)</span>
+            </li>
+            <li>
+              <strong>BONUS 2: The "Idea Safeguard" Resource Pack</strong>
+              <p>
+                I'll give you simple, easy to use templates like a
+                Non-Disclosure Agreement (NDA) and straightforward guides on IP
+                basics, so you can feel more secure talking about your idea.
+              </p>
+              <span class="value-note">(Value: £99)</span>
+            </li>
+            <li>
+              <strong
+                >BONUS 3: The "Side Hustle & Employment Navigation"
+                Guide</strong
+              >
+              <p>
+                I'll give you a clear, simple guide to help you understand any
+                potential issues with your current employer or non-compete
+                clauses.
+              </p>
+              <span class="value-note">(Value: £99)</span>
+            </li>
+            <li>
+              <strong>BONUS 4: The "Confident Pitching" Toolkit</strong>
+              <p>
+                I'll give you practical pitch templates and my top tips to help
+                you feel more confident and sound great when you're talking
+                about your business idea.
+              </p>
+              <span class="value-note">(Value: £99)</span>
+            </li>
+            <li>
+              <strong
+                >BONUS 5: The "Startup Insurance Demystified" Checklist</strong
+              >
+              <p>
+                I'll give you a simple checklist to help you figure out if you
+                need business insurance, and what kind might be relevant for
+                you.
+              </p>
+              <span class="value-note">(Value: £99)</span>
+            </li>
+            <li>
+              <strong
+                >BONUS 6: The "Simple Startup Bookkeeping" Starter Kit</strong
+              >
+              <p>
+                I'll give you a basic spreadsheet template and a straightforward
+                guide to help you start tracking your business income and
+                expenses without getting overwhelmed.
+              </p>
+              <span class="value-note">(Value: £99)</span>
+            </li>
+            <li>
+              <strong
+                >BONUS 7: The "Founder Wellness & Anti-Burnout" Resource</strong
+              >
+              <p>
+                I'll share some practical tips and resources I've found useful
+                for managing stress and avoiding burnout while you're busy
+                building your dream.
+              </p>
+              <span class="value-note">(Value: £99)</span>
+            </li>
+          </ul>
+          <p
+            style="
+              text-align: center;
+              font-weight: bold;
+              font-size: 1.2em;
+              margin-top: 1.5rem;
+            "
+          >
+            <span style="color: #15803d; font-weight: bold">
+              Over £750 in bonus resources FREE
+            </span>
+            if you're selected to join the accelerator.
+          </p>
+        </section>
+
+        <!-- GUARANTEE -->
+        <section
+          class="content-section guarantee-section-wrapper"
+          id="guarantee-wrapper"
+        >
+          <div class="guarantee-section">
+            <h3>Here's My Promise to You</h3>
+            <p>
+              When you complete this Accelerator, you'll be so crystal clear on
+              your idea, and so genuinely confident in its value, that you'll
+              find yourself naturally wanting to talk about it with everyone -
+              colleagues, friends, even that slightly skeptical family member!
+            </p>
+            <p>
+              If that unstoppable urge to share <i>isn't</i> bubbling up because
+              you still feel some hesitation or lack clarity by the end of our
+              program,
+              <b>I'll personally dedicate more focused time with you</b>,
+              refining every piece, until you're bursting to share everything
+              we've created.
+            </p>
+          </div>
+        </section>
+
+        <!-- LIMITED ACCESS / SCARCITY -->
+        <section class="content-section" id="limited-access">
+          <h2>I'm Working One-on-One Exclusively</h2>
+          <p>
+            Because this program involves a lot of direct, personal work from
+            me, to make sure you get my full attention and the best possible
+            results, I'm only taking on <strong>one person at a time</strong>.
+            I'm opening up a waitlist for these one-on-one spots now.
+          </p>
+          <p>
+            Being one of the first selected from this list means you get this
+            <b>super personal attention at this low starting price</b>.
+            Honestly, once I've run a few of these and really fine-tuned
+            everything, that price will have to increase, so the waitlist is the
+            way to get in early on the best terms.
+          </p>
+        </section>
+
+        <!-- FINAL CTA -->
+        <section class="final-cta" id="apply">
+          <h2>
+            Join The Waitlist<br />
+            <span
+              style="
+                background-color: #fffbeb;
+                color: #78350f;
+                padding: 0.2em 0.6em;
+                border-radius: 4px;
+                font-size: 0.7em;
+                font-weight: 600;
+                margin-left: 0.5em;
+                display: inline-block;
+                vertical-align: middle;
+              "
+              >(Next slot opens July 2025)</span
+            >
+          </h2>
+          <p>
+            I work exclusively one-on-one to provide deep, personalised support,
+            so spots are extremely limited. Join the priority waitlist to be
+            among the first considered when the next slot opens.
+          </p>
+          <form
+            action="YOUR_EMAIL_SERVICE_ACTION_URL_HERE"
+            method="POST"
+            class="waitlist-form"
+            id="final-cta-waitlist-form"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+              aria-label="Email address for waitlist"
+            />
+            <button type="submit" class="cta-button">JOIN THE WAITLIST</button>
+          </form>
+        </section>
+      </div>
+      <!-- end .container -->
+    </main>
+
+    <footer>
+      <div class="container">
+        <!-- IMPORTANT: Replace with your company name -->
+        <p>© 2025 BRANDCANVAS LTD. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>
