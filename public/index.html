@@ -134,7 +134,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 2.5rem 1rem;
+        padding: 1.5rem 1rem;
         background: var(--light-blue-bg);
       }
       .hero-main-content {
@@ -146,7 +146,7 @@
         margin-bottom: 1.5rem;
       }
       .hero-headshot {
-        max-width: 300px;
+        max-width: 240px;
         width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
@@ -160,15 +160,68 @@
       .hero-text-block {
         flex: 1;
       }
+      .via-accelerator {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--dark-blue);
+        margin-top: 0.25rem;
+        margin-bottom: 1rem;
+      }
       .hero-full h1 {
-        font-size: 2.4rem;
+        font-size: 2.1rem;
         margin-bottom: 1rem;
         line-height: 1.2;
       }
       .hero-full .sub-headline {
-        font-size: 1.15rem;
+        font-size: 1.05rem;
         color: var(--dark-blue);
         margin-bottom: 1.5rem;
+      }
+
+      .hero-summary-cta {
+        margin-top: 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--dark-blue);
+        line-height: 1.5;
+      }
+
+      /* Primary CTA: Booking Button */
+      .booking-button {
+        background-color: var(--royal-blue);
+        color: var(--white);
+        border: none;
+        padding: 1rem 2.5rem;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(30, 55, 153, 0.15);
+        display: block;
+        margin: 1.5rem auto 0 auto; /* center it */
+        max-width: 400px;
+        width: 100%;
+      }
+      .booking-button:hover {
+        background-color: var(--dark-blue);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(30, 55, 153, 0.2);
+      }
+
+      /* Secondary CTA: Waitlist Form */
+      .secondary-cta-container {
+        margin-top: 2rem;
+        text-align: center;
+      }
+      .secondary-cta-intro {
+        font-size: 0.9em;
+        color: var(--text-grey);
+        margin-bottom: 1rem;
+      }
+      .secondary-cta-container .formkit-form {
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
 
       /* CTA Button (now Submit Button) Styling */
@@ -243,14 +296,15 @@
           gap: 1.5rem;
         }
         .hero-headshot {
-          max-width: 250px;
+          max-width: 220px;
           margin: 0 auto;
         }
         .hero-text-block {
           width: 100%;
         }
         .hero-full h1,
-        .hero-full .sub-headline {
+        .hero-full .sub-headline,
+        .via-accelerator {
           text-align: center;
         }
 
@@ -475,24 +529,6 @@
         margin-bottom: 0;
       }
 
-      /* Progress bar styling */
-      .testimonial-progress {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background-color: #dde1f0;
-        border-radius: 0 0 8px 8px;
-        overflow: hidden;
-      }
-      .testimonial-progress-bar {
-        width: 0%;
-        height: 100%;
-        background-color: var(--royal-blue);
-        transition: width 0.1s linear;
-      }
-
       /* Navigation arrows */
       .testimonial-nav {
         position: absolute;
@@ -661,7 +697,7 @@
           gap: 1.5rem; /* Adjust gap for stacked layout */
         }
         .hero-headshot {
-          max-width: 250px; /* Changed from 180px */
+          max-width: 220px;
           width: 100%;
           height: auto;
           aspect-ratio: 1 / 1;
@@ -669,7 +705,8 @@
           transform: none;
         }
         .hero-full h1,
-        .hero-full .sub-headline {
+        .hero-full .sub-headline,
+        .via-accelerator {
           text-align: center; /* Center text content on mobile when stacked */
         }
         h1 {
@@ -777,6 +814,12 @@
           padding: 0 1rem !important;
         }
       }
+
+      .waitlist-fallback {
+        margin-top: 3rem;
+        padding-top: 2.5rem;
+        border-top: 1px solid #dde1f0;
+      }
     </style>
   </head>
   <body>
@@ -787,102 +830,25 @@
       <div class="container">
         <div class="hero-main-content">
           <div class="hero-text-block">
-            <h1>The Industry Expert's<br />AI Startup Accelerator</h1>
+            <h1>I turn your AI idea into a real startup in 6 weeks</h1>
+            <p class="via-accelerator">
+              via the Industry Expert's AI Startup Accelerator™
+            </p>
             <p class="sub-headline">
-              You're an expert in your industry.<br /><br />You've identified
-              <b>that massive problem</b> - the one where you know whoever
-              cracks it will have a
-              <strong>hugely successful business</strong>.<br /><br />
-              You think
-              <strong>AI might finally be the answer</strong>. <br /><br />
-              This is a <strong>major opportunity</strong>, but you're not a
-              coder and you're new to building a tech startup. <br /><br />
-              <b
-                >Sound like your situation? I made this accelerator just for
-                you.</b
-              >
+              Built for industry experts who know the problem, but don't know
+              how to code.
             </p>
-            <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-            <form
-              action="https://app.kit.com/forms/8134177/subscriptions"
-              class="seva-form formkit-form"
-              method="post"
-              data-sv-form="8134177"
-              data-uid="b3d2cf27db"
-              data-format="inline"
-              data-version="5"
-              data-options='{"settings":{"after_subscribe":{"action":"redirect","success_message":"","redirect_url":"https://liamcoyle.com/thanks"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":false,"url":"https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
-              min-width="400 500 600 700 800"
-            >
-              <div data-style="clean">
-                <ul
-                  class="formkit-alert formkit-alert-error"
-                  data-element="errors"
-                  data-group="alert"
-                ></ul>
-                <div
-                  data-element="fields"
-                  data-stacked="false"
-                  class="seva-fields formkit-fields"
-                >
-                  <div class="formkit-field">
-                    <input
-                      class="formkit-input"
-                      name="email_address"
-                      aria-label="Email Address"
-                      placeholder="Email Address"
-                      required=""
-                      type="email"
-                      style="
-                        color: rgb(0, 0, 0);
-                        border-color: rgb(227, 227, 227);
-                        border-radius: 4px;
-                        font-weight: 400;
-                      "
-                    />
-                  </div>
-                  <button
-                    data-element="submit"
-                    class="formkit-submit formkit-submit"
-                    style="
-                      color: rgb(255, 255, 255);
-                      background-color: rgb(30, 55, 153);
-                      border-radius: 4px;
-                      font-weight: 700;
-                    "
-                  >
-                    <div class="formkit-spinner">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
-                    <span class="">JOIN THE WAITLIST</span>
-                  </button>
-                </div>
-              </div>
-            </form>
-            <p
-              style="
-                font-size: 0.85em;
-                margin-top: 0.75rem;
-                color: var(--text-grey);
-                text-align: center;
-              "
-            >
-              <span
-                style="
-                  background-color: #fffbeb;
-                  color: #78350f;
-                  padding: 0.2em 0.6em;
-                  border-radius: 4px;
-                  font-size: 1.4em;
-                  font-weight: 600;
-                  display: inline-block;
-                "
-              >
-                (Next slot opens July 2025)
-              </span>
+            <p class="hero-summary-cta">
+              Prototype, brand, business setup - all handled for you.
             </p>
+            <button
+              class="booking-button"
+              data-cal-link="liamcoyle/accelerator-quick-chat"
+              data-cal-namespace="accelerator-quick-chat"
+              data-cal-config='{"layout":"column_view","theme":"light"}'
+            >
+              Book a Free Discovery Call
+            </button>
           </div>
           <img
             src="images/LiamCoyleHeadshot Cropped.webp"
@@ -890,7 +856,6 @@
             class="hero-headshot"
           />
         </div>
-        <!-- The form and p tag are now moved into hero-text-block above -->
       </div>
     </section>
 
@@ -899,10 +864,6 @@
         <!-- PHASES (MODULES) -->
         <section class="content-section" id="phases">
           <h2>What You Get in the Accelerator</h2>
-          <p>
-            A comprehensive, step-by-step program designed to turn your industry
-            knowledge into a tangible, market-ready AI startup vision.
-          </p>
 
           <h3>Phase 1: The Clarity & Concept Blueprint</h3>
           <div class="module-item">
@@ -922,7 +883,7 @@
                 problem it solves, and how your solution works, all summarised
                 clearly on paper for you.
               </p>
-              <span class="value-note">(Value: £1,200)</span>
+              <span class="value-note">(Usually Worth: £1,200)</span>
             </div>
           </div>
           <div class="module-item">
@@ -938,7 +899,7 @@
                 actually make money - be it one-off payments, subscriptions, or
                 something else.
               </p>
-              <span class="value-note">(Value: £1,000)</span>
+              <span class="value-note">(Usually Worth: £1,000)</span>
             </div>
           </div>
           <div class="module-item">
@@ -957,7 +918,7 @@
                 your very first product version, so you can launch something
                 impactful without unnecessary complexity.
               </p>
-              <span class="value-note">(Value: £2,500)</span>
+              <span class="value-note">(Usually Worth: £2,500)</span>
             </div>
           </div>
           <div class="module-item">
@@ -974,7 +935,7 @@
                 designs, so you can actually see, feel, and share what your
                 product will look like.
               </p>
-              <span class="value-note">(Value: £4,000)</span>
+              <span class="value-note">(Usually Worth: £4,000)</span>
             </div>
           </div>
 
@@ -994,7 +955,7 @@
                 involved with setting up your business, so you don't to worry
                 about it.
               </p>
-              <span class="value-note">(Value: £500)</span>
+              <span class="value-note">(Usually Worth: £500)</span>
             </div>
           </div>
           <div class="module-item">
@@ -1011,7 +972,7 @@
                 designing your logo, colours, and overall style, all packaged in
                 a brand guide so you look instantly credible and unique.
               </p>
-              <span class="value-note">(Value: £5,000)</span>
+              <span class="value-note">(Usually Worth: £5,000)</span>
             </div>
           </div>
           <div class="module-item">
@@ -1028,7 +989,7 @@
                 plans for making it a success, so you can confidently share your
                 vision.
               </p>
-              <span class="value-note">(Value: £2,500)</span>
+              <span class="value-note">(Usually Worth: £2,500)</span>
             </div>
           </div>
           <div class="module-item">
@@ -1047,7 +1008,7 @@
                 and build a simple, effective landing page with an email sign-up
                 form so you can start gathering interest right away.
               </p>
-              <span class="value-note">(Value: £1,500)</span>
+              <span class="value-note">(Usually Worth: £1,500)</span>
             </div>
           </div>
 
@@ -1065,7 +1026,7 @@
                 opportunities, grants, and support programs that are a perfect
                 match for your new business.
               </p>
-              <span class="value-note">(Value: £2,000)</span>
+              <span class="value-note">(Usually Worth: £2,000)</span>
             </div>
           </div>
           <div class="module-item">
@@ -1085,7 +1046,7 @@
                   clients) in the last 2 years</b
                 >, so I know exactly what makes applications successful.
               </p>
-              <span class="value-note">(Value: £5,000)</span>
+              <span class="value-note">(Usually Worth: £5,000)</span>
             </div>
           </div>
 
@@ -1105,7 +1066,7 @@
                 questions, quick advice, or support you need for the duration of
                 the accelerator - you won't be on your own.
               </p>
-              <span class="value-note">(Value: £1,500)</span>
+              <span class="value-note">(Usually Worth: £1,500)</span>
             </div>
           </div>
           <div class="module-item">
@@ -1122,7 +1083,7 @@
                 up) and actively support you in whatever way you need during
                 that meeting.
               </p>
-              <span class="value-note">(Value: £3,000)</span>
+              <span class="value-note">(Usually Worth: £3,000)</span>
             </div>
           </div>
 
@@ -1143,7 +1104,7 @@
                 to sign up, pay, and use your solution, so you can start
                 collecting payments and making real money.
               </p>
-              <span class="value-note">(Value: £2,000)</span>
+              <span class="value-note">(Usually Worth: £2,000)</span>
             </div>
           </div>
         </section>
@@ -1232,6 +1193,16 @@
               for the actual software build.
             </p>
           </div>
+
+          <button
+            class="booking-button"
+            data-cal-link="liamcoyle/accelerator-quick-chat"
+            data-cal-namespace="accelerator-quick-chat"
+            data-cal-config='{"layout":"column_view","theme":"light"}'
+            style="margin-top: 2.5rem"
+          >
+            Book a Free Discovery Call
+          </button>
         </section>
 
         <!-- TESTIMONIALS SECTION - NEW -->
@@ -1313,9 +1284,6 @@
                   Daniel Garcia (Data Scientist @ Kainos/Accenture)
                 </p>
               </div>
-              <div class="testimonial-progress">
-                <div class="testimonial-progress-bar"></div>
-              </div>
             </div>
             <div class="testimonial-nav">
               <button
@@ -1354,7 +1322,7 @@
                 'Founder's Control Panel,' so you can easily see all progress,
                 key dates, files, and communications in one organised place.
               </p>
-              <span class="value-note">(Value: £150)</span>
+              <span class="value-note">(Usually Worth: £150)</span>
             </li>
             <li>
               <strong>BONUS 2: The "Idea Safeguard" Resource Pack</strong>
@@ -1363,7 +1331,7 @@
                 Non-Disclosure Agreement (NDA) and straightforward guides on IP
                 basics, so you can feel more secure talking about your idea.
               </p>
-              <span class="value-note">(Value: £99)</span>
+              <span class="value-note">(Usually Worth: £99)</span>
             </li>
             <li>
               <strong
@@ -1375,7 +1343,7 @@
                 potential issues with your current employer or non-compete
                 clauses.
               </p>
-              <span class="value-note">(Value: £99)</span>
+              <span class="value-note">(Usually Worth: £99)</span>
             </li>
             <li>
               <strong>BONUS 4: The "Confident Pitching" Toolkit</strong>
@@ -1384,7 +1352,7 @@
                 you feel more confident and sound great when you're talking
                 about your business idea.
               </p>
-              <span class="value-note">(Value: £99)</span>
+              <span class="value-note">(Usually Worth: £99)</span>
             </li>
             <li>
               <strong
@@ -1395,7 +1363,7 @@
                 need business insurance, and what kind might be relevant for
                 you.
               </p>
-              <span class="value-note">(Value: £99)</span>
+              <span class="value-note">(Usually Worth: £99)</span>
             </li>
             <li>
               <strong
@@ -1406,7 +1374,7 @@
                 guide to help you start tracking your business income and
                 expenses without getting overwhelmed.
               </p>
-              <span class="value-note">(Value: £99)</span>
+              <span class="value-note">(Usually Worth: £99)</span>
             </li>
             <li>
               <strong
@@ -1417,7 +1385,7 @@
                 for managing stress and avoiding burnout while you're busy
                 building your dream.
               </p>
-              <span class="value-note">(Value: £99)</span>
+              <span class="value-note">(Usually Worth: £99)</span>
             </li>
           </ul>
           <p
@@ -1479,87 +1447,110 @@
 
         <!-- FINAL CTA -->
         <section class="final-cta" id="apply">
-          <h2>
-            Join The Waitlist<br />
-            <span
-              style="
-                background-color: #fffbeb;
-                color: #78350f;
-                padding: 0.2em 0.6em;
-                border-radius: 4px;
-                font-size: 0.7em;
-                font-weight: 600;
-                margin-left: 0.5em;
-                display: inline-block;
-                vertical-align: middle;
-              "
-              >(Next slot opens July 2025)</span
-            >
-          </h2>
+          <h2>Ready to Turn Your Idea Into Reality?</h2>
           <p>
-            I work exclusively one-on-one to provide deep, personalised support,
-            so spots are extremely limited. Join the priority waitlist to be
-            among the first considered when the next slot opens.
+            Let's have a chat. Book a free, no-obligation discovery call to
+            explore how we can bring your vision to life together.
           </p>
-          <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-          <form
-            action="https://app.kit.com/forms/8134177/subscriptions"
-            class="seva-form formkit-form"
-            method="post"
-            data-sv-form="8134177"
-            data-uid="b3d2cf27db"
-            data-format="inline"
-            data-version="5"
-            data-options='{"settings":{"after_subscribe":{"action":"redirect","success_message":"","redirect_url":"https://liamcoyle.com/thanks"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":false,"url":"https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
-            min-width="400 500 600 700 800"
+          <button
+            class="booking-button"
+            data-cal-link="liamcoyle/accelerator-quick-chat"
+            data-cal-namespace="accelerator-quick-chat"
+            data-cal-config='{"layout":"column_view","theme":"light"}'
+            style="margin-bottom: 3rem; margin-top: 1rem"
           >
-            <div data-style="clean">
-              <ul
-                class="formkit-alert formkit-alert-error"
-                data-element="errors"
-                data-group="alert"
-              ></ul>
-              <div
-                data-element="fields"
-                data-stacked="false"
-                class="seva-fields formkit-fields"
-              >
-                <div class="formkit-field">
-                  <input
-                    class="formkit-input"
-                    name="email_address"
-                    aria-label="Email Address"
-                    placeholder="Email Address"
-                    required=""
-                    type="email"
-                    style="
-                      color: rgb(0, 0, 0);
-                      border-color: rgb(227, 227, 227);
-                      border-radius: 4px;
-                      font-weight: 400;
-                    "
-                  />
-                </div>
-                <button
-                  data-element="submit"
-                  class="formkit-submit formkit-submit"
-                  style="
-                    color: rgb(255, 255, 255);
-                    background-color: rgb(30, 55, 153);
-                    border-radius: 4px;
-                    font-weight: 700;
-                  "
+            Book a Free Discovery Call
+          </button>
+          <div class="waitlist-fallback">
+            <h3 style="font-size: 1.7rem; color: var(--royal-blue)">
+              Not ready for a call?
+            </h3>
+            <p style="margin-top: 0.5rem; margin-bottom: 1.5rem">
+              Join the priority waitlist instead to be notified about the next
+              accelerator slot.
+            </p>
+            <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+            <form
+              action="https://app.kit.com/forms/8134177/subscriptions"
+              class="seva-form formkit-form"
+              method="post"
+              data-sv-form="8134177"
+              data-uid="b3d2cf27db"
+              data-format="inline"
+              data-version="5"
+              data-options='{"settings":{"after_subscribe":{"action":"redirect","success_message":"","redirect_url":"https://liamcoyle.com/thanks"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":false,"url":"https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+              min-width="400 500 600 700 800"
+            >
+              <div data-style="clean">
+                <ul
+                  class="formkit-alert formkit-alert-error"
+                  data-element="errors"
+                  data-group="alert"
+                ></ul>
+                <div
+                  data-element="fields"
+                  data-stacked="false"
+                  class="seva-fields formkit-fields"
                 >
-                  <div class="formkit-spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                  <div class="formkit-field">
+                    <input
+                      class="formkit-input"
+                      name="email_address"
+                      aria-label="Email Address"
+                      placeholder="Email Address"
+                      required=""
+                      type="email"
+                      style="
+                        color: rgb(0, 0, 0);
+                        border-color: rgb(227, 227, 227);
+                        border-radius: 4px;
+                        font-weight: 400;
+                      "
+                    />
                   </div>
-                  <span class="">JOIN THE WAITLIST</span>
-                </button>
+                  <button
+                    data-element="submit"
+                    class="formkit-submit formkit-submit"
+                    style="
+                      color: rgb(255, 255, 255);
+                      background-color: rgb(30, 55, 153);
+                      border-radius: 4px;
+                      font-weight: 700;
+                    "
+                  >
+                    <div class="formkit-spinner">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                    <span class="">JOIN THE WAITLIST</span>
+                  </button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+            <p
+              style="
+                font-size: 0.85em;
+                margin-top: 0.75rem;
+                color: var(--text-grey);
+                text-align: center;
+              "
+            >
+              <span
+                style="
+                  background-color: #fffbeb;
+                  color: #78350f;
+                  padding: 0.2em 0.6em;
+                  border-radius: 4px;
+                  font-size: 1.4em;
+                  font-weight: 600;
+                  display: inline-block;
+                "
+              >
+                (Next slot opens July 2025)
+              </span>
+            </p>
+          </div>
         </section>
       </div>
       <!-- end .container -->
@@ -1586,60 +1577,15 @@
         const cards = document.querySelectorAll(".testimonial-card");
         const prevButton = document.querySelector(".testimonial-arrow.prev");
         const nextButton = document.querySelector(".testimonial-arrow.next");
-        const progressBar = document.querySelector(".testimonial-progress-bar");
         let currentIndex = 0;
         const interval = 8000; // 8 seconds between transitions
-        let startTime;
-        let pausedTime = 0;
-        let isPaused = false;
-        let progressInterval;
-        let autoRotate;
+        let autoRotateInterval;
 
-        function showTestimonial(index, resetProgress = true) {
+        function showTestimonial(index) {
           cards.forEach((card) => {
             card.classList.remove("active");
           });
           cards[index].classList.add("active");
-
-          if (resetProgress) {
-            startNewProgress();
-          }
-        }
-
-        function startNewProgress() {
-          clearInterval(progressInterval);
-          startTime = Date.now();
-          pausedTime = 0;
-          isPaused = false;
-          updateProgress();
-        }
-
-        function updateProgress() {
-          progressInterval = setInterval(() => {
-            if (!isPaused) {
-              const elapsedTime = Date.now() - startTime - pausedTime;
-              const progress = Math.min((elapsedTime / interval) * 100, 100);
-              progressBar.style.width = `${progress}%`;
-
-              if (progress >= 100) {
-                nextTestimonial();
-              }
-            }
-          }, 16); // 60fps update
-        }
-
-        function pauseProgress() {
-          if (!isPaused) {
-            isPaused = true;
-            pausedTime = Date.now() - startTime;
-          }
-        }
-
-        function resumeProgress() {
-          if (isPaused) {
-            isPaused = false;
-            startTime = Date.now() - pausedTime;
-          }
         }
 
         function nextTestimonial() {
@@ -1652,27 +1598,76 @@
           showTestimonial(currentIndex);
         }
 
+        function startAutoRotate() {
+          clearInterval(autoRotateInterval);
+          autoRotateInterval = setInterval(nextTestimonial, interval);
+        }
+
+        function stopAutoRotate() {
+          clearInterval(autoRotateInterval);
+        }
+
         // Add click handlers to arrows
         nextButton.addEventListener("click", () => {
           nextTestimonial();
+          startAutoRotate(); // Restart auto-rotation after manual click
         });
 
         prevButton.addEventListener("click", () => {
           prevTestimonial();
+          startAutoRotate(); // Restart auto-rotation after manual click
         });
 
-        // Initialize first testimonial and progress
+        // Initialize first testimonial and start auto-rotation
         showTestimonial(0);
+        startAutoRotate();
 
         // Pause/Resume on hover
         const carousel = document.querySelector(".testimonial-carousel");
-        carousel.addEventListener("mouseenter", () => {
-          pauseProgress();
-        });
+        carousel.addEventListener("mouseenter", stopAutoRotate);
+        carousel.addEventListener("mouseleave", startAutoRotate);
+      });
+    </script>
+    <script>
+      // Cal.com initialization script
+      (function (C, A, L) {
+        let p = function (a, ar) {
+          a.q.push(ar);
+        };
+        let d = C.document;
+        C.Cal =
+          C.Cal ||
+          function () {
+            let cal = C.Cal;
+            let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () {
+                p(api, arguments);
+              };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["initNamespace", namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        carousel.addEventListener("mouseleave", () => {
-          resumeProgress();
-        });
+      Cal("init", "accelerator-quick-chat", { origin: "https://cal.com" });
+      Cal.ns["accelerator-quick-chat"]("ui", {
+        theme: "light",
+        hideEventTypeDetails: false,
+        layout: "column_view",
       });
     </script>
   </body>
